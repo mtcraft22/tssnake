@@ -1,0 +1,1 @@
+Build: sudo ./node_modules/.bin/tsc whit my tsconfig. For the ts create a correct es modules include code
