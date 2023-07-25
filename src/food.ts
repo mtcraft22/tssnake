@@ -14,6 +14,7 @@ export class food{
     }
     public draw(){
         for(let i of this._listcords){
+            this.ctx.beginPath()
             this.ctx.moveTo(i[0],i[1])
             this.ctx.fillStyle = "red";
             this.ctx.rect(i[0],i[1],20,20)

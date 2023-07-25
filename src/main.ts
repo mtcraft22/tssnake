@@ -1,4 +1,4 @@
-import { Physics2D, physics2D } from "./fisics2d.js"
+import { Physics2D } from "./fisics2d.js"
 import { food } from "./food.js"
 import { snake } from "./snake.js"
 
@@ -29,11 +29,14 @@ document.addEventListener("keypress", function (e) {
     if (e.key == "s") {
         last = "s"
     }
+    if (e.key == "e"){
+        last = "e"
+    }
 })
 let run: boolean = true
 
 function update() {
-    ctx.fillStyle="green"
+    
     if (last == "d") {
         ctx.beginPath()
         ctx.clearRect(0, 0, 800, 800)
@@ -67,6 +70,8 @@ function update() {
         serpiente.draw()
         
     }
+    if (last=="e"){return}
+
     for (let j = 0; j < manzanas.listcords.length; j++) {
         if (Physics2D.Rectcolision2D(serpiente.cords[0], serpiente.cords[1], manzanas.listcords[j][0], manzanas.listcords[j][1], 20, 20)) {
             manzanas.listcords.splice(j, 1)
@@ -83,7 +88,7 @@ function update() {
         
     }
     serpiente.lastcords.unshift(serpiente.cords)
-    ctx.fillStyle="red"
+    
     manzanas.draw()
 }
 

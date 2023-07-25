@@ -38,6 +38,7 @@ export class snake{
         this.ctx.closePath()
         
         for (let i=0 ; i<this._lastcords.length;i++){
+            this.ctx.beginPath()
             this.ctx.moveTo(this._lastcords[i][0],this._lastcords[i][1])
             this.ctx.fillStyle="green"
             this.ctx.rect(this._lastcords[i][0],this._lastcords[i][1],20,20)
