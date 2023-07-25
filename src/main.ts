@@ -41,7 +41,7 @@ function update() {
         ctx.beginPath()
         ctx.clearRect(0, 0, 800, 800)
         ctx.closePath()
-        serpiente.cords = ([serpiente.cords[0] + 20, serpiente.cords[1]])
+        serpiente.cords = ([serpiente.cords[0] + 21, serpiente.cords[1]])
         serpiente.draw()
         
 
@@ -50,7 +50,7 @@ function update() {
         ctx.beginPath()
         ctx.clearRect(0, 0, 800, 800)
         ctx.closePath()
-        serpiente.cords = ([serpiente.cords[0] - 20, serpiente.cords[1]])
+        serpiente.cords = ([serpiente.cords[0] - 21, serpiente.cords[1]])
         serpiente.draw()
         
     }
@@ -58,7 +58,7 @@ function update() {
         ctx.beginPath()
         ctx.clearRect(0, 0, 800, 800)
         ctx.closePath()
-        serpiente.cords = ([serpiente.cords[0], serpiente.cords[1] - 20])
+        serpiente.cords = ([serpiente.cords[0], serpiente.cords[1] - 21])
         serpiente.draw()
         
     }
@@ -66,7 +66,7 @@ function update() {
         ctx.beginPath()
         ctx.clearRect(0, 0, 800, 800)
         ctx.closePath()
-        serpiente.cords = ([serpiente.cords[0], serpiente.cords[1] + 20])
+        serpiente.cords = ([serpiente.cords[0], serpiente.cords[1] + 21])
         serpiente.draw()
         
     }
@@ -80,6 +80,13 @@ function update() {
             break
         }
     }
+    for (let j = 0; j < serpiente.lastcords.length; j++) {
+        if (Physics2D.Rectcolision2D(serpiente.cords[0], serpiente.cords[1], serpiente.lastcords[j][0], serpiente.lastcords[j][1], 20, 20)) {
+            serpiente.lastcords.splice(j, 1)
+            serpiente.children -= 1
+            break
+        }
+    }
     if (serpiente.lastcords.length>serpiente.children){
         while(serpiente.lastcords.length>serpiente.children){
             serpiente.lastcords.splice(serpiente.lastcords.length-1,1)
@@ -88,7 +95,8 @@ function update() {
         
     }
     serpiente.lastcords.unshift(serpiente.cords)
-    
+    let p: HTMLParagraphElement=document.getElementById("rel") as HTMLParagraphElement
+    p.innerHTML=`tienes ${serpiente.children} puntos`
     manzanas.draw()
 }
 
