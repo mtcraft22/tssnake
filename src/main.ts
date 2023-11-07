@@ -100,4 +100,4 @@ function update() {
     manzanas.draw()
 }
 
-window.setInterval(update, 100)
+window.setInterval(update, 16.66)
